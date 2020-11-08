@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>   
- 
+//#include <time.h>
+
  
 #define TORRE_INICIAL 1
 #define TORRE_AUXILIAR 2
@@ -15,10 +16,10 @@ char disko='*';
 int main()
 {
     int cantDiscos, movimientos, moves;
-     
-    
-  
-    
+     //para el calculo de tiempo de ejecucion
+    int tiempo_inicial,tiempo_final;
+  	int tiempo_total;
+   
  printf("Cantidad de discos a mover: ");
  scanf("%d", &cantDiscos);
  printf("\n_________________________________________ \n");
@@ -29,10 +30,16 @@ int main()
  printf("La Torre:\n");
  muestra();
  printf("\n_________________________________________\nLa serie de movimientos a realizar es:\n");
+ 
+ tiempo_inicial = clock(); 
+
  movimientos = hanoi(cantDiscos, TORRE_INICIAL, TORRE_AUXILIAR, TORRE_FINAL);
+ tiempo_final= clock();
  printf("\n\nSe realizaron en total %d movimientos\n", movimientos);
  printf("\n\nMovimientos calculados %i\n", moves);
- 
+ tiempo_total=(tiempo_final-tiempo_inicial);
+ printf("%d   %d",tiempo_inicial,tiempo_final);
+ printf("la funcion tomo: %i ciclos de procesador en terminar",tiempo_total);
  return 0;
 }
  
